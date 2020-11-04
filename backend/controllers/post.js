@@ -72,3 +72,40 @@ exports.createPost = async (req, res) => {
       });
     }
   };
+
+  exports.updatePost = async (req, res) => {
+    try {
+      let newImageUrl;
+      const userId = token.getUserId(req);
+      let post = await db.Post.findOne({ where: { id: req.params.id } });
+      if (userId === post.UserId) {
+        if (req.file) {
+          newImageUrl = `${req.protocol}://${req.get("host")}/upload/${
+            req.file.filename
+          }`;
+          if (post.imageUrl) {
+            const filename = post.imageUrl.split("/upload")[1];
+            fs.unlink(`upload/${filename}`, (err) => {
+              if (err) console.log(err);
+              else {
+                console.log(`Deleted file: upload/${filename}`);
+              }
+            });
+          }
+        }
+        if (req.body.message) {
+          post.message = req.body.message;
+        }
+        post.title = req.body.title;
+        post.imageUrl = newImageUrl;
+        const newPost = await post.save({
+          fields: ["message", "title", "imageUrl"],
+        });
+        res.status(200).json({ newPost: newPost, messageRetour: "Message modifié" });
+      } else {
+        res.status(400).json({ message: "Droits requis" });
+      }
+    } catch (error) {
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };
