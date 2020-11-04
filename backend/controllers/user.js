@@ -91,10 +91,21 @@ exports.login = async (req, res) => {
     }
   };
 
-  exports.deleteUser = async (req, res, next) => {
+  exports.deleteUser = async (req, res) => {
+    try {
       const id = req.params.id;
       const user = await db.User.findOne({ where: { id: id } });
-
-      db.User.destroy({ where: { id: id } });
-      res.status(200).json({ messageRetour: "utilisateur supprimé" });
-};
+      if (user.photo !== null) {
+        const filename = user.photo.split("/upload")[1];
+        fs.unlink(`upload/${filename}`, () => {
+          db.User.destroy({ where: { id: id } });
+          res.status(200).json({ messageRetour: "User supprimé" });
+        });
+      } else {
+        db.User.destroy({ where: { id: id } }); 
+        res.status(200).json({ messageRetour: "User supprimé" });
+      }
+    } catch (error) {
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };

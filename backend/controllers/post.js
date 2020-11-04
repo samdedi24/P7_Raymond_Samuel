@@ -109,3 +109,75 @@ exports.createPost = async (req, res) => {
       return res.status(500).send({ error: "Erreur serveur" });
     }
   };
+
+  exports.deletePost = async (req, res) => {
+    try {
+      const userId = token.getUserId(req);
+      const checkAdmin = await db.User.findOne({ where: { id: userId } });
+      const post = await db.Post.findOne({ where: { id: req.params.id } });
+      if (userId === post.UserId || checkAdmin.admin === true) {
+        if (post.imageUrl) {
+          const filename = post.imageUrl.split("/upload")[1];
+          fs.unlink(`upload/${filename}`, () => {
+            db.Post.destroy({ where: { id: post.id } });
+            res.status(200).json({ message: "Message supprimé" });
+          });
+        } else {
+          db.Post.destroy({ where: { id: post.id } }, { truncate: true });
+          res.status(200).json({ message: "Message supprimé" });
+        }
+      } else {
+        res.status(400).json({ message: "Droits requis" });
+      }
+    } catch (error) {
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };
+
+  exports.getOnePost = async (req, res) => {
+    try {
+      const post = await db.Post.findOne({
+        where: { id: req.params.id },
+        include: [
+          {
+            model: db.User,
+            attributes: ["username", "photo", "id"],
+          },
+          {
+            model: db.Comment,
+            order: [["createdAt", "DESC"]],
+            attributes: ["message", "username", "UserId"],
+            include: [
+              {
+                model: db.User,
+                attributes: ["photo", "username"],
+              },
+            ],
+          },
+        ],
+      });
+      res.status(200).json(post);
+    } catch (error) {
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };
+
+  exports.addComment = async (req, res) => {
+    try {
+      const comment = req.body.commentMessage;
+      const username = req.body.commentUsername;
+      const newComment = await db.Comment.create({
+        message: comment,
+        username: username,
+        UserId: token.getUserId(req),
+        PostId: req.params.id,
+      });
+  
+      res
+        .status(201)
+        .json({ newComment, messageRetour: "Commentaire publié" });
+    } catch (error) {
+        console.log(error)
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };
