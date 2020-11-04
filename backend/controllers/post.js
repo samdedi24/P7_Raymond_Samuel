@@ -52,10 +52,6 @@ exports.createPost = async (req, res) => {
             attributes: ["username", "id", "photo"],
           },
           {
-            model: db.Like,
-            attributes: ["UserId"],
-          },
-          {
             model: db.Comment,
             attributes: ["message", "username", "UserId", "id"],
             order: [["createdAt", "DESC"]],
