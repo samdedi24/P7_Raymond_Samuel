@@ -96,8 +96,8 @@ exports.login = async (req, res) => {
       const id = req.params.id;
       const user = await db.User.findOne({ where: { id: id } });
       if (user.photo !== null) {
-        const filename = user.photo.split("/upload")[1];
-        fs.unlink(`upload/${filename}`, () => {
+        const filename = user.photo.split("/images")[1];
+        fs.unlink(`images/${filename}`, () => {
           db.User.destroy({ where: { id: id } });
           res.status(200).json({ messageRetour: "User supprimé" });
         });

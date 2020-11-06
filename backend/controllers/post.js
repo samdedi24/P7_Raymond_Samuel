@@ -11,7 +11,7 @@ exports.createPost = async (req, res) => {
       });
       if (user !== null) {
         if (req.file) {
-          imageUrl = `${req.protocol}://${req.get("host")}/upload/${
+          imageUrl = `${req.protocol}://${req.get("host")}/images/${
             req.file.filename
           }`;
         } else {
@@ -32,7 +32,7 @@ exports.createPost = async (req, res) => {
   
         res
           .status(201)
-          .json({ post: post, messageRetour: "Votre post est ajouté" });
+          .json({ post: post, messageRetour: "Votre message est ajouté" });
       } else {
         res.status(400).send({ error: "Erreur " });
       }
@@ -80,15 +80,15 @@ exports.createPost = async (req, res) => {
       let post = await db.Post.findOne({ where: { id: req.params.id } });
       if (userId === post.UserId) {
         if (req.file) {
-          newImageUrl = `${req.protocol}://${req.get("host")}/upload/${
+          newImageUrl = `${req.protocol}://${req.get("host")}/images/${
             req.file.filename
           }`;
           if (post.imageUrl) {
-            const filename = post.imageUrl.split("/upload")[1];
-            fs.unlink(`upload/${filename}`, (err) => {
+            const filename = post.imageUrl.split("/images")[1];
+            fs.unlink(`images/${filename}`, (err) => {
               if (err) console.log(err);
               else {
-                console.log(`Deleted file: upload/${filename}`);
+                console.log(`Deleted file: images/${filename}`);
               }
             });
           }
@@ -117,8 +117,8 @@ exports.createPost = async (req, res) => {
       const post = await db.Post.findOne({ where: { id: req.params.id } });
       if (userId === post.UserId || checkAdmin.admin === true) {
         if (post.imageUrl) {
-          const filename = post.imageUrl.split("/upload")[1];
-          fs.unlink(`upload/${filename}`, () => {
+          const filename = post.imageUrl.split("/images")[1];
+          fs.unlink(`images/${filename}`, () => {
             db.Post.destroy({ where: { id: post.id } });
             res.status(200).json({ message: "Message supprimé" });
           });
@@ -164,8 +164,9 @@ exports.createPost = async (req, res) => {
 
   exports.addComment = async (req, res) => {
     try {
-      const comment = req.body.commentMessage;
-      const username = req.body.commentUsername;
+      const comment = req.body.message;
+      const username = req.body.username;
+      console.log("test", req.body)
       const newComment = await db.Comment.create({
         message: comment,
         username: username,
@@ -178,6 +179,23 @@ exports.createPost = async (req, res) => {
         .json({ newComment, messageRetour: "Commentaire publié" });
     } catch (error) {
         console.log(error)
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };
+
+  exports.deleteComment = async (req, res) => {
+    try {
+      const userId = token.getUserId(req);
+      const checkAdmin = await db.User.findOne({ where: { id: userId } });
+      const comment = await db.Comment.findOne({ where: { id: req.params.id } });
+  
+      if (userId === comment.UserId || checkAdmin.admin === true) {
+        db.Comment.destroy({ where: { id: req.params.id } }, { truncate: true });
+        res.status(200).json({ message: "Commentaire supprimé" });
+      } else {
+        res.status(400).json({ message: "Droits requis" });
+      }
+    } catch (error) {
       return res.status(500).send({ error: "Erreur serveur" });
     }
   };
