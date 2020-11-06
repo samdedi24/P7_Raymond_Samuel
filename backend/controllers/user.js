@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const db = require("../models");
 const token = require("../middleware/token");
 const { Op } = require("sequelize");
+const fs = require("fs");
 
 exports.signup = async (req, res) => {
     try {
@@ -86,6 +87,53 @@ exports.login = async (req, res) => {
         where: { id: req.params.id },
       });
       res.status(200).send(user);
+    } catch (error) {
+      return res.status(500).send({ error: "Erreur serveur" });
+    }
+  };
+
+  exports.updateAccount = async (req, res) => {
+    const id = req.params.id;
+    try {
+      const userId = token.getUserId(req);
+      let newPhoto;
+      let user = await db.User.findOne({ where: { id: id } }); 
+      if (userId === user.id) {
+        if (req.file && user.photo) {
+          newPhoto = `${req.protocol}://${req.get("host")}/images/${
+            req.file.filename
+          }`;
+          const filename = user.photo.split("/images")[1];
+          fs.unlink(`images/${filename}`, (err) => {
+            if (err) console.log(err);
+            else {
+              console.log(`Deleted file: images/${filename}`);
+            }
+          });
+        } else if (req.file) {
+          newPhoto = `${req.protocol}://${req.get("host")}/images/${
+            req.file.filename
+          }`;
+        }
+        if (newPhoto) {
+          user.photo = newPhoto;
+        }
+        if (req.body.bio) {
+          user.bio = req.body.bio;
+        }
+        if (req.body.username) {
+          user.username = req.body.username;
+        }
+        const newUser = await user.save({ fields: ["username", "bio", "photo"] }); 
+        res.status(200).json({
+          user: newUser,
+          messageRetour: "Le profil a bien été modifié",
+        });
+      } else {
+        res
+          .status(400)
+          .json({ messageRetour: "Droits requis" });
+      }
     } catch (error) {
       return res.status(500).send({ error: "Erreur serveur" });
     }

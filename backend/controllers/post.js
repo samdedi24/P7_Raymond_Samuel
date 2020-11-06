@@ -1,5 +1,6 @@
-const token = require('../middleware/token')
-const db = require('../models')
+const token = require('../middleware/token');
+const db = require('../models');
+const fs = require("fs");
 
 exports.createPost = async (req, res) => {
     const userId = token.getUserId(req);
