@@ -5,8 +5,8 @@ const auth = require("../middleware/auth");
 const authUser = require('../middleware/authUser');
 const multer = require("../middleware/multer");
 
-router.post("/signup", authUser.checkUsername, authUser.validation, userCtrl.signup);
-router.post("/login", authUser.validation, userCtrl.login);
+router.post("/signup", userCtrl.signup);
+router.post("/login", userCtrl.login);
 router.get("/accounts", userCtrl.getAllUsers);
 router.get("/accounts/:id", userCtrl.getAccount);
 router.put("/accounts/:id", auth, multer, userCtrl.updateAccount);

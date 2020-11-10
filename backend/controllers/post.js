@@ -179,7 +179,7 @@ exports.createPost = async (req, res) => {
         .status(201)
         .json({ newComment, messageRetour: "Commentaire publié" });
     } catch (error) {
-        console.log(error)
+        console.log("test", error)
       return res.status(500).send({ error: "Erreur serveur" });
     }
   };
