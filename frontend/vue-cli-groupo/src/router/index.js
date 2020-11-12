@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Signup from '@/components/Signup'
 import Login from '@/components/Login'
+import Account from '@/components/Account'
+import Posts from '@/components/Posts'
+import CreateMessage from '@/components/CreateMessage'
 
 Vue.use(VueRouter)
 
@@ -21,6 +24,21 @@ const routes = [
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/account/:id',
+      name: 'account',
+      component: Account,
+    },
+    {
+      path: '/posts',
+      name: 'posts',
+      component: Posts
+    },
+    {
+      path: 'add/',
+      name: 'message-create',
+      component: CreateMessage
     },
   ]
   

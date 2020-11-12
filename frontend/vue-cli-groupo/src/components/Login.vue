@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Auth from "../services/AuthenticationService.js";
+import AuthenticationService from "../services/AuthenticationService.js";
 export default {
   name: "Login",
   data() {
@@ -35,32 +35,21 @@ export default {
     };
   },
   methods: {
-    async login() {
+    async login () {
       try {
-        const response = await Auth.login({
+        const response = await AuthenticationService.login({
           email: this.email,
-          password: this.password,
-        });
-        this.message = response.data.message;
-  
-        this.$store.dispatch("setToken", response.data.token);
-        this.$store.dispatch("setUser", response.data.user);
-        this.$store.dispatch("getUserById", response.data.user.id);
-        let router = this.$router;
-        setTimeout(function() {
-          router.push("/posts");
-        }, 1500);
+          password: this.password
+        })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.userId)
+        this.$router.push("/posts")
       } catch (error) {
-        this.errorMessage = error.response.data.error;
-        setTimeout(() => {
-          this.email= "";
-        this.password= "";
-          this.errorMessage = "";
-        }, 500);
+        this.error = error.response.data.error
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 

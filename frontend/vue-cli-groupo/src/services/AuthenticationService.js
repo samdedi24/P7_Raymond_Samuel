@@ -4,7 +4,10 @@ export default {
     signup (data) {
       return Api().post('users/signup', data)
     },
-    login (credentials) {
-      return Api().post('users/login', credentials)
-    }
+    login (data) {
+      return Api().post('users/login', data)
+    },
+    getUserById(id) {
+      return Api().get("users/accounts/" + id);
+    },
   }

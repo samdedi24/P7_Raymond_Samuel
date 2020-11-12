@@ -1,3 +1,4 @@
+
 <template>
     <nav>
         <v-toolbar fixed dark>
@@ -34,16 +35,16 @@
         text 
         dark
          :to="{
-          name: 'post'
+          name: 'posts'
         }">
-        Articles
+        Actualités
       </v-btn>
 
       <v-btn  
         v-if="$store.state.isUserLoggedIn"
         text
         dark  
-        @click="getUserProfile(user.id)">
+        @click="getUserProfile(id)">
         Mon profil
       </v-btn>
 
@@ -63,7 +64,13 @@
 <script>
 import {mapState} from 'vuex';
 export default {
-  data () {
+  name: "PageHeader",
+  props: {
+    user: {
+      type: Object,
+    },
+  },
+  data() {
     return {};
   },
   computed: mapState(
@@ -76,7 +83,7 @@ export default {
       this.$router.push("/login")
     },
     getUserProfile(id) {
-      this.$router.push(`/users/profile/${id}`);
+      this.$router.push(`/account/${id}`);
     }
   }
 }
@@ -86,4 +93,3 @@ export default {
   img{
     width: 160px;
   }
-</style>
