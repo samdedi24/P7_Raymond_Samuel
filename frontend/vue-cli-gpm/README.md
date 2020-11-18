@@ -1,4 +1,4 @@
-# vue-cli-groupo
+# vue-cli-gpm
 
 ## Project setup
 ```
