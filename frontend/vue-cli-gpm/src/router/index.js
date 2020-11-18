@@ -26,7 +26,7 @@ const routes = [
       component: Login
     },
     {
-      path: '/posts',
+      path: '/all',
       name: 'posts',
       component: Posts
     },
@@ -43,7 +43,9 @@ const routes = [
   ]
 
   const router = new VueRouter({
-    routes
-  })
-
-  export default router 
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes,
+  });
+  
+  export default router;

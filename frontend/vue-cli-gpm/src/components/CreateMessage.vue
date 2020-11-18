@@ -64,9 +64,7 @@ export default {
               }
             try {
                 await PostsService.createPost(this.message)
-                this.$router.push({
-                    name: 'posts'
-                })
+                this.$router.push("/all")
             } catch (err) {
                 console.log(err)
             }

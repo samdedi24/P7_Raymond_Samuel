@@ -4,7 +4,7 @@
       <v-col lg="4" md="6" sm="7" class="mx-auto">
         <v-card class="account-card d-flex flex-column" elevation="4" xs6>
           <div class="profil-top pb-3 ">
-            <v-btn to="/posts" class="mx-2 return-btn" x-small>
+            <v-btn to="/all" class="mx-2 return-btn" x-small>
               Retour
             </v-btn>
             <v-card-title flat dense dark class="profil-title mr-3"
@@ -187,7 +187,7 @@ export default {
   },
   methods: {
     getBackHome() {
-      this.$router.push("/");
+      this.$router.push("/all");
     },
     toggleUsername() {
       this.updateUsername = true;

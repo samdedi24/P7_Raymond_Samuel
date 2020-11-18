@@ -43,7 +43,7 @@
         v-if="$store.state.isLoggedIn"
         text
         dark  
-        @click="getUserProfile(id)">
+        @click="getUserProfile">
         Mon profil
       </v-btn>
 
@@ -61,7 +61,6 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
 export default {
   name: "PageHeader",
   props: {
@@ -72,9 +71,18 @@ export default {
   data () {
     return {};
   },
-  computed: mapState(
-    ['state']
-  ),
+  computed: {
+    isLogged() {
+      return this.$store.getters.isLogged
+    },
+    isLoggedIn() {
+      if (this.$store.state.isLoggedIn) {
+        return "pink";
+      } else {
+        return "";
+      }
+    },
+  },
   methods: {
     logout () {
       this.$store.dispatch('setToken', null)
@@ -82,7 +90,7 @@ export default {
       this.$router.push("/login")
     },
     getUserProfile(id) {
-      this.$router.push(`/account/:id${id}`);
+      this.$router.push(`/accounts/${id}`);
     }
   }
 }

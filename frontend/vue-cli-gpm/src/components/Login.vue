@@ -43,7 +43,7 @@ export default {
         });
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.userId)
-        this.$router.push("/posts")
+        this.$router.push("/all")
       } catch (error) {
         this.error = error.response.data.error
       }

@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import PostsService from "../services/PostsService";
 import AuthenticationService from "../services/AuthenticationService";
 import axios from "axios";
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     message: "",
     error: "",
   },
+  plugins: [createPersistedState({
+    storage: window.sessionStorage,
+  })],
   getters: {
     posts(state) {
       return state.posts;
