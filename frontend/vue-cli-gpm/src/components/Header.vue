@@ -10,7 +10,7 @@
     <v-toolbar-items>
 
       <v-btn 
-        v-if="!$store.state.isUserLoggedIn"
+        v-if="!$store.state.isLoggedIn"
         text 
         dark
         :to="{
@@ -20,7 +20,7 @@
       </v-btn>
 
       <v-btn 
-        v-if="!$store.state.isUserLoggedIn"
+        v-if="!$store.state.isLoggedIn"
         text 
         dark
         :to="{
@@ -30,7 +30,7 @@
       </v-btn>
 
       <v-btn 
-        v-if="$store.state.isUserLoggedIn"
+        v-if="$store.state.isLoggedIn"
         text 
         dark
          :to="{
@@ -40,7 +40,7 @@
       </v-btn>
 
       <v-btn  
-        v-if="$store.state.isUserLoggedIn"
+        v-if="$store.state.isLoggedIn"
         text
         dark  
         @click="getUserProfile(id)">
@@ -48,7 +48,7 @@
       </v-btn>
 
       <v-btn 
-        v-if="$store.state.isUserLoggedIn"
+        v-if="$store.state.isLoggedIn"
         text 
         dark
         @click="logout">
