@@ -5,6 +5,7 @@ import Signup from '@/components/Signup'
 import Login from '@/components/Login'
 import Posts from '@/components/Posts'
 import CreateMessage from '@/components/CreateMessage'
+import Account from '@/components/Account'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
       path: '/add',
       name: 'message-create',
       component: CreateMessage
+    },
+    {
+      path: '/account/:id',
+      name: 'account',
+      component: Account
     },
   ]
 
