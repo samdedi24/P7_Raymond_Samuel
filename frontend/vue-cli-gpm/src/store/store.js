@@ -49,7 +49,7 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    // users
+   
     SET_TOKEN(state, token) {
       state.token = token;
       if (token) {
@@ -106,9 +106,7 @@ export default new Vuex.Store({
       state.posts = [...state.posts.filter((element) => element.id !== id)];
       state.message = "post supprimé";
     },
-    // end posts
-
-    // comments
+    
     COMMENT_POST(state, comment) {
       state.posts = [comment, ...state.posts];
       state.message = "post commenté";
@@ -119,7 +117,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    //users
+    
     setToken({ commit }, token) {
       commit("SET_TOKEN", token);
     },
@@ -169,9 +167,6 @@ export default new Vuex.Store({
         })
       })
     },
-    // end users
-
-    // posts
 
     getPosts({ commit }) {
       PostsService.getPosts().then((response) => {

@@ -8,7 +8,7 @@
               Retour
             </v-btn>
             <v-card-title flat dense dark class="profil-title mr-3"
-              ><h1 class="titre">Modifier le profil</h1>
+              ><h2 class="titre">Modifier le profil</h2>
             </v-card-title>
             <div class="delete-account">
               <v-tooltip v-if="!$store.state.user.admin === true" bottom>
@@ -65,13 +65,6 @@
                   :src="user.photo"
                   alt="Photo de profil"
                 />
-                <v-icon
-                  :color="isLoggedIn"
-                  size="96px"
-                  aria-label="avatar"
-                  v-else
-                  >$vuetify.icons.account</v-icon
-                >
               </v-avatar>
               <v-btn @click="togglePhoto" class="mx-2" x-small>
                 Changer
@@ -97,9 +90,9 @@
               class="d-flex flex-column justify-space-between"
               max-width="70%"
             >
-              <strong>Ta bio: </strong>
+              <strong>Votre biographie </strong>
               <div>
-                <span v-if="!user.bio"> Parle nous de toi 😊</span>
+                <span v-if="!user.bio"> Parle nous de toi !</span>
                 <span class="bio-field">{{ user.bio }}</span>
               </div>
             </div>
