@@ -43,7 +43,7 @@
         v-if="$store.state.isLoggedIn"
         text
         dark  
-        @click="getUserProfile">
+        @click="getUserProfile(id)">
         Mon profil
       </v-btn>
 

@@ -218,9 +218,8 @@ export default {
         formData.append("image", this.file);
       }
       this.$store.dispatch("getUsers");
-      this.$store.dispatch("getUserById", this.user.id);
+      this.$store.dispatch("getUserById", this.user.UserId);
       this.$store.dispatch("updateAccount", formData);
-      this.$store.dispatch("getUserById", this.user.id);
       this.updateBio = false;
       this.updatePhoto = false;
       this.updateUsername = false;

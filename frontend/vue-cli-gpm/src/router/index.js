@@ -36,7 +36,7 @@ const routes = [
       component: CreateMessage
     },
     {
-      path: '/account/:id',
+      path: '/accounts/:id',
       name: 'account',
       component: Account
     },

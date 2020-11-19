@@ -16,19 +16,30 @@
 
                 <div v-for="message in messages" class="message" :key="message.id">
 
-                    <v-layout>
-                        <v-flex xs6>
-                            <div class="message-title">
-                                {{message.title}}
-                            </div>
-                            <div class="message-content">
-                                {{message.message}}
-                            </div>
-                            <div class="message-attachment">
-                                {{message.imageUrl}}
-                            </div>                    
-                        </v-flex>
-                    </v-layout>
+                    <v-card class="post-align">
+                        <span class="pseudo text-left ml-5">{{ message.User.username }}</span>
+                        <span class="date ml-5 text-left">{{
+                        message.createdAt | moment("calendar")
+                        }}</span>
+                        <div class="message-title">
+                            {{message.title}}
+                        </div>
+                        <div class="message-content">
+                            {{message.message}}
+                        </div>
+                        <div class="message-attachment">
+                            {{message.imageUrl}}
+                        </div>       
+                        <v-btn
+                            @click="getOnePost(post.id)"
+                            light
+                            medium
+                            absolute
+                            right
+                            midlle>
+                            Modifier
+                        </v-btn>             
+                    </v-card>
                 </div>
             </panel>
         </v-flex>
@@ -50,7 +61,16 @@ export default {
    methods: {
        navigateTo (route) {
            this.$router.push(route)
-       }
+       },
+       getUserProfile(id) {
+            this.$router.push(`/account/${id}`);
+       },
+       getOnePost(id) {
+            this.$router.push(`posts/${id}`);
+       },
+       deletePost() {
+            this.$emit("deletePost", this.post.id);
+       },
    },
    async mounted () {
        this.messages = (await PostsService.getAllPosts()).data
@@ -65,6 +85,7 @@ export default {
         text-align: center;
         margin-top: 25px;
         width: 600px;
+        height: auto;
         box-shadow: 2px 4px 5px 1px rgba(0, 0, 0, 0.3);
     }
     .message-title {
@@ -77,5 +98,9 @@ export default {
         text-align: center;
         height: auto;
         padding: 8px;
+    }
+    .post-align {
+        display: flex;
+        flex-direction: column;
     }
 </style>

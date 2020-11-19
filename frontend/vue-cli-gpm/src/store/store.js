@@ -93,10 +93,6 @@ export default new Vuex.Store({
       state.post = post;
       state.isLoading = false;
     },
-    ADD_POST(state, post) {
-      state.posts = [post, ...state.posts];
-      state.message = "post créé";
-    },
     UPDATE_POST(state, id, post) {
       Object.assign(
         state.posts.find((element) => element.id === id),
@@ -195,19 +191,6 @@ export default new Vuex.Store({
         const post = response.data;
         commit("GET_POST_BY_ID", post);
       });
-    },
-    createPost({ commit }, post) {
-      PostsService.createPost(post)
-        .then((response) => {
-          const post = response.data;
-          commit("ADD_POST", post);
-        })
-        .then(() => {
-          PostsService.getPosts().then((response) => {
-            const posts = response.data;
-            commit("GET_POSTS", posts);
-          });
-        });
     },
     updatePost({ commit }, data) {
       let id = this.state.post.id;
