@@ -17,8 +17,8 @@
                 <div v-for="message in messages" class="message" :key="message.id">
 
                     <v-card class="post-align">
-                        <span class="pseudo text-left ml-5">{{ message.User.username }}</span>
-                        <span class="date ml-5 text-left">{{
+                        <span>{{ message.User.username }}</span>
+                        <span>{{
                         message.createdAt | moment("calendar")
                         }}</span>
                         <div class="message-title">
@@ -91,6 +91,7 @@ export default {
     .message-title {
         display: flex;
         font-size: 24x;
+        font-weight: bold;
         padding: 5px;
     }
     .message-content{

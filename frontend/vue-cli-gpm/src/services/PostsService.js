@@ -1,30 +1,30 @@
 import Api from "../services/Api";
 
 export default {
-  getPosts() {
-    return Api().get("posts");
+  getPosts(id) {
+    return Api().get("posts/" + id);
   },
   getAllPosts() {
-    return Api().get("post/all");
+    return Api().get("posts/all");
   },
   getPostById(id) {
-    return Api().get("post/" + id);
+    return Api().get("posts/" + id);
   },
   createPost(data) {
-    return Api().post("post/add", data);
+    return Api().post("posts/add", data);
   },
   updatePost(id, data) {
-    return Api.put("post/" + id, data);
+    return Api.put("posts/" + id, data);
   },
 
   deletePost(id) {
-    return Api().delete("post/" + id);
+    return Api().delete("posts/" + id);
   },
   commentPost(id, data) {
-    return Api().post("post/" + id + "/comments", data);
+    return Api().post("posts/" + id + "/comments", data);
   },
 
   deleteComment(id) {
-    return Api().delete("post/comments/" + id);
+    return Api().delete("posts/comments/" + id);
   },
 };

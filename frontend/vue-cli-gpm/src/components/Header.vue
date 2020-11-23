@@ -43,7 +43,7 @@
         v-if="$store.state.isLoggedIn"
         text
         dark  
-        @click="getUserProfile(id)">
+        @click="getUserProfile">
         Mon profil
       </v-btn>
 
@@ -69,7 +69,8 @@ export default {
     }, 
   },
   data () {
-    return {};
+    return {
+    };
   },
   computed: {
     isLogged() {

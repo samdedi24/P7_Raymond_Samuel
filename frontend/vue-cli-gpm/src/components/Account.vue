@@ -8,7 +8,7 @@
               Retour
             </v-btn>
             <v-card-title flat dense dark class="profil-title mr-3"
-              ><h2 class="titre">Modifier le profil</h2>
+              ><h2 class="titre">Profil</h2>
             </v-card-title>
             <div class="delete-account">
               <v-tooltip v-if="!$store.state.user.admin === true" bottom>
@@ -58,7 +58,7 @@
               v-if="showPhoto"
               class="profil-middle__right d-flex  flex-column"
             >
-              <v-avatar size="96px" class="mt-2">
+              <v-avatar size="93px" class="mt-2">
                 <img
                   rounded
                   v-if="user.photo"
@@ -211,8 +211,9 @@ export default {
         formData.append("image", this.file);
       }
       this.$store.dispatch("getUsers");
-      this.$store.dispatch("getUserById", this.user.UserId);
+      this.$store.dispatch("getUserById", this.user.id);
       this.$store.dispatch("updateAccount", formData);
+      this.$store.dispatch("getUserById", this.user.id);
       this.updateBio = false;
       this.updatePhoto = false;
       this.updateUsername = false;
@@ -234,8 +235,8 @@ export default {
 
 <style scoped lang="scss">
 .v-avatar {
-  margin-top: -30px;
-  margin-right: 1em;
+  margin-top: -20px;
+  margin-bottom: 1em;
 }
 .account-card {
   display: flex;

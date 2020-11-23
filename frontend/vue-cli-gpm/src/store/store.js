@@ -14,7 +14,6 @@ export default new Vuex.Store({
     user: {},
     isLoggedIn: false,
     isLoading: false,
-
     posts: [],
     users: [],
     post: {},
@@ -84,9 +83,6 @@ export default new Vuex.Store({
       state.message = "compte supprimé";
     },
     GET_POSTS(state, posts) {
-      (state.posts = posts), (state.isLoading = false);
-    },
-    GET_HOT_POSTS(state, posts) {
       (state.posts = posts), (state.isLoading = false);
     },
     GET_POST_BY_ID(state, post) {
@@ -172,12 +168,6 @@ export default new Vuex.Store({
       PostsService.getPosts().then((response) => {
         const posts = response.data;
         commit("GET_POSTS", posts);
-      });
-    },
-    getHotPosts({ commit }) {
-      PostsService.getHotPosts().then((response) => {
-        const posts = response.data;
-        commit("GET_HOT_POSTS", posts);
       });
     },
 
