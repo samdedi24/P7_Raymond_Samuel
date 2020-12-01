@@ -7,7 +7,7 @@ export default {
   login(data) {
     return Api().post("users/login", data);
   },
-  deleteAccount(id) {
+  deleteUser(id) {
     return Api().delete("users/accounts/" + id);
   },
 

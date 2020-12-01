@@ -78,7 +78,7 @@ export default new Vuex.Store({
       );
       state.message = "compte modifié";
     },
-    DELETE_ACCOUNT(state, id) {
+    DELETE_USER(state, id) {
       state.users = [...state.users.filter((element) => element.id !== id)];
       state.message = "compte supprimé";
     },
@@ -139,9 +139,9 @@ export default new Vuex.Store({
         commit("GET_USER_BY_ID", user);
       });
     },
-    deleteAccount({ commit }, id) {
-      AuthenticationService.deleteAccount(id).then(() => {       
-          commit("DELETE_ACCOUNT", id);
+    deleteUser({ commit }, id) {
+      AuthenticationService.deleteUser(id).then(() => {       
+          commit("DELETE_USER", id);
       })
        
       

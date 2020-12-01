@@ -43,7 +43,7 @@
         v-if="$store.state.isLoggedIn"
         text
         dark  
-        @click="getUserProfile">
+        @click="getUserProfile($store.state.user.id)">
         Mon profil
       </v-btn>
 
@@ -83,6 +83,7 @@ export default {
         return "";
       }
     },
+
   },
   methods: {
     logout () {

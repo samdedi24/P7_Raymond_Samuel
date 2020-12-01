@@ -14,7 +14,7 @@
               <v-tooltip v-if="!$store.state.user.admin === true" bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
-                    @click="deleteAccount(user.id)"
+                    @click="deleteUser"
                     class="mx-2"
                     fab
                     x-small
@@ -205,7 +205,7 @@ export default {
     },
     onSubmit() {
       const formData = new FormData();
-      formData.append("Username", this.newUsername);
+      formData.append("username", this.newUsername);
       formData.append("bio", this.newBio);
       if (this.file !== null) {
         formData.append("image", this.file);
@@ -222,12 +222,8 @@ export default {
       this.showPhoto = true;
       this.showUsername = true;
     },
-    deleteAccount(id) {
-      this.$store.dispatch("deleteAccount", id);
-      this.$store.dispatch("logOut");
-      setTimeout(() => {
-        this.getBackHome();
-      }, 2000);
+    deleteUser(id) {
+      this.$store.dispatch("deleteUser", id);
     },
   },
 };
