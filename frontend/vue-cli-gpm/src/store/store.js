@@ -85,6 +85,9 @@ export default new Vuex.Store({
     GET_POSTS(state, posts) {
       (state.posts = posts), (state.isLoading = false);
     },
+    GET_ALL_POSTS(state, posts) {
+      (state.posts = posts), (state.isLoading = false);
+    },
     GET_POST_BY_ID(state, post) {
       state.post = post;
       state.isLoading = false;
@@ -170,7 +173,12 @@ export default new Vuex.Store({
         commit("GET_POSTS", posts);
       });
     },
-
+    getAllPosts({ commit }) {
+      PostsService.getAllPosts().then((response) => {
+        const posts = response.data;
+        commit("GET_ALL_POSTS", posts);
+      })
+    },
     getPostById({ commit }, id) {
       PostsService.getPostById(id).then((response) => {
         const post = response.data;

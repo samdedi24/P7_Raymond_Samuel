@@ -1,6 +1,6 @@
 <template>
     <div>
-        <panel title="Créer les artciles de ton choix">
+        <v-card>
             <v-flex xs6>
                 <v-text-field
                     label="Titre"
@@ -29,7 +29,7 @@
                 @click="createPost">
                 Envoyer l'article
             </v-btn>
-        </panel>
+        </v-card>
 
         <div class="error" v-if="error">
             {{error}}
@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import PostsService from '@/services/PostsService'
 export default {
     data () {
@@ -70,9 +69,6 @@ export default {
             }
         }
     },
-    components: {
-        Panel
-    }
 }
 </script>
 
