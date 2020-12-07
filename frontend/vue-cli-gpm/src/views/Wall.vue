@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="feed-container">
+  <v-container fluid class="wall-container">
     <v-row class="bloc">
       <v-col sm="12" md="6" class="mx-auto">
         <v-card flat class="posts-card ">
@@ -56,7 +56,7 @@
       elevation="0"
     >
       <v-card-title class="d-flex justify-center" flat dense dark>
-        <span>Sois le premier à publier un post !</span>
+        <span>Publie un post !</span>
       </v-card-title>
     </v-card>
   </v-container>

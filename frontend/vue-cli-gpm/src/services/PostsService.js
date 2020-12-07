@@ -20,7 +20,7 @@ export default {
   deletePost(id) {
     return Api().delete("posts/" + id);
   },
-  commentPost(id, data) {
+  addComment(id, data) {
     return Api().post("posts/" + id + "/comments", data);
   },
 

@@ -18,6 +18,7 @@ export default new Vuex.Store({
     users: [],
     post: {},
     message: "",
+    title: "",
     error: "",
   },
   plugins: [createPersistedState({
@@ -97,18 +98,19 @@ export default new Vuex.Store({
         state.posts.find((element) => element.id === id),
         post
       );
-     
+      state.title = "titre mod"; 
       state.message = "Votre post est bien modifié";
     },
 
     DELETE_POST(state, id) {
       state.posts = [...state.posts.filter((element) => element.id !== id)];
-      state.message = "post supprimé";
+      state.title = "titre supprimé";
+      state.message = "message supprimé";
     },
     
-    COMMENT_POST(state, comment) {
+    ADD_COMMENT(state, comment) {
       state.posts = [comment, ...state.posts];
-      state.message = "post commenté";
+      state.message = "message comenté";
     },
     DELETE_COMMENT(state, id) {
       state.posts = [...state.posts.filter((element) => element.id !== id)];
@@ -196,6 +198,7 @@ export default new Vuex.Store({
           commit("UPDATE_POST", id, post);
         });
     },
+    
     deletePost({ commit }, id) {
       PostsService.deletePost(id)
         .then(() => {
@@ -209,7 +212,7 @@ export default new Vuex.Store({
         });
     },
 
-    commentPost({ commit }, payload) {
+    addComment({ commit }, payload) {
       axios
         .post(
           `http://localhost:3030/api/posts/${payload.id}/comments`,
@@ -218,7 +221,7 @@ export default new Vuex.Store({
         )
         .then((response) => {
           const comment = response.data;
-          commit("COMMENT_POST", comment);
+        commit("ADD_COMMENT", comment);
         })
         .then(() => {
           PostsService.getPosts().then((response) => {
@@ -227,6 +230,7 @@ export default new Vuex.Store({
           });
         });
     },
+
     deleteComment({ commit }, id) {
       PostsService.deleteComment(id)
         .then(() => {

@@ -18,7 +18,7 @@
                 <v-text-field
                     label="Contenu"
                     required
-                    multi-line="true"
+                    large
                     v-model="message.message">
                 </v-text-field>
             </v-flex>

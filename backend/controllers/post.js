@@ -116,7 +116,7 @@ exports.createPost = async (req, res) => {
       const userId = token.getUserId(req);
       const checkAdmin = await db.User.findOne({ where: { id: userId } });
       const post = await db.Post.findOne({ where: { id: req.params.id } });
-      if (userId === post.UserId || checkAdmin.admin === true) {
+      if (userId === post.UserId || checkAdmin.isAdmin === true) {
         if (post.imageUrl) {
           const filename = post.imageUrl.split("/images")[1];
           fs.unlink(`images/${filename}`, () => {
@@ -165,8 +165,8 @@ exports.createPost = async (req, res) => {
 
   exports.addComment = async (req, res) => {
     try {
-      const comment = req.body.message;
-      const username = req.body.username;
+      const comment = req.body.commentMessage;
+      const username = req.body.commentUsername;
       console.log("test", req.body)
       const newComment = await db.Comment.create({
         message: comment,
@@ -190,7 +190,7 @@ exports.createPost = async (req, res) => {
       const checkAdmin = await db.User.findOne({ where: { id: userId } });
       const comment = await db.Comment.findOne({ where: { id: req.params.id } });
   
-      if (userId === comment.UserId || checkAdmin.admin === true) {
+      if (userId === comment.UserId || checkAdmin.isAdmin === true) {
         db.Comment.destroy({ where: { id: req.params.id } }, { truncate: true });
         res.status(200).json({ message: "Commentaire supprimé" });
       } else {
