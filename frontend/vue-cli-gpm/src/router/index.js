@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Signup from '@/components/Signup'
 import Login from '@/components/Login'
-import Posts from '@/components/Posts'
+import Wall from '@/views/Wall'
 import CreateMessage from '@/components/CreateMessage'
 import Account from '@/components/Account'
 
@@ -27,8 +27,8 @@ const routes = [
     },
     {
       path: '/all',
-      name: 'posts',
-      component: Posts
+      name: 'wall',
+      component: Wall
     },
     {
       path: '/add',

@@ -34,7 +34,7 @@
         text 
         dark
          :to="{
-          name: 'posts'
+          name: 'wall'
         }">
         Actualités
       </v-btn>
@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  name: "PageHeader",
+  name: "Header",
   props: {
     user: {
       type: Object,
