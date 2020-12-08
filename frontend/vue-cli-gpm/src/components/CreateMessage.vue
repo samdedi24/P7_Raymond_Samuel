@@ -1,28 +1,30 @@
 <template>
-    <div>
-        <v-card>
-            <v-flex xs6>
-                <v-text-field
-                    label="Titre"
-                    required
-                    :rules="[required]"
-                    v-model="message.title">
-                </v-text-field>
-
-                <v-text-field
-                    label="Lien ou image"
-                    v-model="message.imageUrl">
-                </v-text-field>
-            </v-flex>
-            <v-flex lg2>
-                <v-text-field
-                    label="Contenu"
-                    required
-                    large
-                    v-model="message.message">
-                </v-text-field>
-            </v-flex>
-
+    <v-container fluid class="create-container">
+        <v-card flat dense class="d-flex flex-column mx-auto">
+            <v-flex auto xs6>
+                <v-card-title flat dense class="mr-3">
+                    <v-text-field
+                        label="Titre"
+                        required
+                        :rules="[required]"
+                        v-model="message.title">
+                    </v-text-field>
+                </v-card-title>
+                <v-card flat class="mr-4">
+                    <v-text-field
+                        label="Lien ou image"
+                        v-model="message.imageUrl">
+                    </v-text-field>
+                </v-card> 
+                <v-card flat class="mr-4"> 
+                    <v-text-field
+                        label="Contenu"
+                        required
+                        :rules="[required]"
+                        v-model="message.message">
+                    </v-text-field>
+                </v-card>      
+                </v-flex>
             <v-btn
                 dark
                 class="cyan"
@@ -30,11 +32,7 @@
                 Envoyer l'article
             </v-btn>
         </v-card>
-
-        <div class="error" v-if="error">
-            {{error}}
-        </div>
-    </div>
+    </v-container>    
 </template>
 
 <script>
@@ -69,6 +67,7 @@ export default {
             }
         }
     },
+
 }
 </script>
 

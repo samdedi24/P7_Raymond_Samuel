@@ -240,6 +240,9 @@ export default {
   margin-top: 2em;
   margin-bottom: 4em;
 }
+.profil-title {
+  padding: 0;
+}
 .profil-top {
   display: flex;
   justify-content: space-between;
@@ -248,8 +251,5 @@ export default {
 .profil-middle {
   width: 100%;
   margin: auto !important;
-}
-.profil-title {
-  padding: 0;
 }
 </style>

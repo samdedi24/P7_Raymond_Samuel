@@ -24,14 +24,14 @@
                 >$vuetify.icons.account</v-icon
               >
             </v-avatar>
-            <div class="nom-date mt-3">
+            <div class="mt-3">
               <span class="username text-left ml-5">{{ post.User.username }}</span>
               <span class="date ml-5 text-left">{{
                 post.createdAt | moment("calendar")
               }}</span>
             </div>
           </v-card-title>
-          <div class="post-options">
+          <div>
             <v-tooltip v-if="$store.state.user.id == post.User.id" bottom>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
@@ -262,13 +262,13 @@ export default {
       this.$router.push(`posts/${id}`);
     },
     onSubmitComment(id) {
-      this.$store.dispatch("getPosts");
+      this.$store.dispatch("getAllPosts");
       this.$store.dispatch("addComment", {
         id: id,
         data: this.data,
       });
       this.data.commentMessage = "";
-      this.$store.dispatch("getPosts");
+      this.$store.dispatch("getAllPosts");
       this.$store.dispatch("getPostById", this.post.id);
     },
     deleteComment(id) {

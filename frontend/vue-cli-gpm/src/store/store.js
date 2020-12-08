@@ -110,7 +110,7 @@ export default new Vuex.Store({
     
     ADD_COMMENT(state, comment) {
       state.posts = [comment, ...state.posts];
-      state.message = "message comenté";
+      state.message = "message commenté";
     },
     DELETE_COMMENT(state, id) {
       state.posts = [...state.posts.filter((element) => element.id !== id)];
@@ -162,9 +162,9 @@ export default new Vuex.Store({
           commit("UPDATE_ACCOUNT", id, newUser);
         })
         .then (() => {
-          PostsService.getPosts().then((response) => {
+          PostsService.getAllPosts().then((response) => {
           const posts = response.data;
-          commit("GET_POSTS", posts);
+          commit("GET_ALL_POSTS", posts);
         })
       })
     },
@@ -205,9 +205,9 @@ export default new Vuex.Store({
           commit("DELETE_POST", id);
         })
         .then(() => {
-          PostsService.getPosts().then((response) => {
+          PostsService.getAllPosts().then((response) => {
             const posts = response.data;
-            commit("GET_POSTS", posts);
+            commit("GET_ALL_POSTS", posts);
           });
         });
     },
@@ -224,9 +224,9 @@ export default new Vuex.Store({
         commit("ADD_COMMENT", comment);
         })
         .then(() => {
-          PostsService.getPosts().then((response) => {
+          PostsService.getAllPosts().then((response) => {
             const posts = response.data;
-            commit("GET_POSTS", posts);
+            commit("GET_ALL_POSTS", posts);
           });
         });
     },
@@ -237,9 +237,9 @@ export default new Vuex.Store({
           commit("DELETE_COMMENT", id);
         })
         .then(() => {
-          PostsService.getPosts().then((response) => {
+          PostsService.getAllPosts().then((response) => {
             const posts = response.data;
-            commit("GET_POSTS", posts);
+            commit("GET_ALL_POSTS", posts);
           });
         });
     },
