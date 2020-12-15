@@ -19,7 +19,7 @@
                   }}</v-icon>
                 </v-btn>
               </template>
-              <span>Publier</span>
+              <span class="text-center">Publier</span>
             </v-tooltip>
           </v-card-title>
         </v-card>
@@ -56,7 +56,7 @@
       elevation="0"
     >
       <v-card-title class="d-flex justify-center" flat dense dark>
-        <span>Publie un post !</span>
+        <span>Connecte toi ou inscris toi pour voir les posts de tes collégues :)</span>
       </v-card-title>
     </v-card>
   </v-container>
@@ -95,4 +95,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

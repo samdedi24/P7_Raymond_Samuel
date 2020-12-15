@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Wall from '@/views/Wall'
 import CreateMessage from '@/components/CreateMessage'
 import Account from '@/components/Account'
+import UpdatePost from '@/components/UpdatePost'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ const routes = [
       name: 'account',
       component: Account
     },
+    {
+      path: '/posts/:id',
+      name: 'updatePost',
+      component: UpdatePost
+    }
   ]
 
   const router = new VueRouter({

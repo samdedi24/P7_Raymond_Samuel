@@ -72,16 +72,16 @@ export default new Vuex.Store({
     GET_USERS(state, users) {
       state.users = users;
     },
+    DELETE_USER(state, id) {
+      state.users = [...state.users.filter((element) => element.id !== id)];
+      state.message = "compte supprimé";
+    },
     UPDATE_ACCOUNT(state, id, user) {
       Object.assign(
         state.users.find((element) => element.id === id),
         user
       );
       state.message = "compte modifié";
-    },
-    DELETE_USER(state, id) {
-      state.users = [...state.users.filter((element) => element.id !== id)];
-      state.message = "compte supprimé";
     },
     GET_POSTS(state, posts) {
       (state.posts = posts), (state.isLoading = false);
@@ -92,6 +92,11 @@ export default new Vuex.Store({
     GET_POST_BY_ID(state, post) {
       state.post = post;
       state.isLoading = false;
+    },
+    ADD_POST(state, post) {
+      state.posts = [post, ...state.posts];
+      state.title = "titre cree";
+      state.message = "post créé";
     },
     UPDATE_POST(state, id, post) {
       Object.assign(
@@ -168,7 +173,19 @@ export default new Vuex.Store({
         })
       })
     },
-
+    createPost({ commit }, post) {
+      PostsService.createPost(post)
+        .then((response) => {
+          const post = response.data;
+          commit("ADD_POST", post);
+        })
+        .then(() => {
+          PostsService.getAllPosts().then((response) => {
+            const posts = response.data;
+            commit("GET_ALL_POSTS", posts);
+          });
+        });
+    },
     getPosts({ commit }) {
       PostsService.getPosts().then((response) => {
         const posts = response.data;

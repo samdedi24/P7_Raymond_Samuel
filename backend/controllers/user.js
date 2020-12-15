@@ -11,7 +11,7 @@ exports.signup = async (req, res) => {
       });
       if (user !== null) {
         if (user.username === req.body.username) {
-          return res.status(400).json({ error: "ce pseudo est déjà utilisé" });
+          return res.status(400).json({ error: "ce pseudo déjà utilisé" });
         }
       } else {
         const hash = await bcrypt.hash(req.body.password, 10);
@@ -68,7 +68,7 @@ exports.login = async (req, res) => {
   exports.getAllUsers = async (req, res) => {
     try {
       const users = await db.User.findAll({
-        attributes: ["username", "id", "bio", "email"],
+        attributes: ["username", "photo", "id", "bio", "email"],
         where: {
           id: {
             [Op.ne]: 1,

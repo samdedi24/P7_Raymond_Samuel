@@ -2,7 +2,7 @@
     <nav>
         <v-toolbar fixed dark>
     <v-toolbar-title class="">
-      <img alt="Vue logo" src="../assets/logo.png">
+      <img alt="Logo Groupomania" src="../assets/icon-left-font-monochrome-black.png">
     </v-toolbar-title>
 
     <v-spacer></v-spacer>

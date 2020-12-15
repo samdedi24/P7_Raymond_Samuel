@@ -1,8 +1,8 @@
 import Api from "../services/Api";
 
 export default {
-  getPosts(id) {
-    return Api().get("posts/" + id);
+  getPosts() {
+    return Api().get("posts");
   },
   getAllPosts() {
     return Api().get("posts/all");
@@ -16,14 +16,12 @@ export default {
   updatePost(id, data) {
     return Api.put("posts/" + id, data);
   },
-
   deletePost(id) {
     return Api().delete("posts/" + id);
   },
   addComment(id, data) {
     return Api().post("posts/" + id + "/comments", data);
   },
-
   deleteComment(id) {
     return Api().delete("posts/comments/" + id);
   },

@@ -246,7 +246,7 @@ export default {
   methods: {
     async reloadWall() {
       try {
-        const response = await PostsService.getPosts();
+        const response = await PostsService.getAllPosts();
         this.posts = response.data;
       } catch (error) {
         this.errorMessage = error.response.data.error;
