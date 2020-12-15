@@ -95,7 +95,6 @@ export default new Vuex.Store({
     },
     ADD_POST(state, post) {
       state.posts = [post, ...state.posts];
-      state.title = "titre cree";
       state.message = "post créé";
     },
     UPDATE_POST(state, id, post) {
@@ -103,7 +102,6 @@ export default new Vuex.Store({
         state.posts.find((element) => element.id === id),
         post
       );
-      state.title = "titre mod"; 
       state.message = "Votre post est bien modifié";
     },
 
@@ -130,9 +128,6 @@ export default new Vuex.Store({
     deleteToken({ commit }, token) {
       commit("DELETE_TOKEN", token);
     },
-    logOut({ commit }) {
-      commit("LOG_OUT");
-    },
     setUser({ commit }, user) {
       commit("SET_USER", user);
     },
@@ -153,8 +148,6 @@ export default new Vuex.Store({
       AuthenticationService.deleteUser(id).then(() => {       
           commit("DELETE_USER", id);
       })
-       
-      
     },
     updateAccount({ commit }, data) {
       let id = this.state.user.id;

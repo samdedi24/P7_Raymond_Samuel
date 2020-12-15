@@ -10,11 +10,11 @@
             <v-card-title flat dense dark class="profil-title mr-3"
               ><h2 class="titre">Profil</h2>
             </v-card-title>
-            <div class="delete-account">
+            <div class="delete-user">
               <v-tooltip v-if="!$store.state.user.admin === true" bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
-                    @click="deleteUser"
+                    @click="deleteUser(user.id)"
                     class="mx-2"
                     fab
                     x-small
@@ -224,6 +224,7 @@ export default {
     },
     deleteUser(id) {
       this.$store.dispatch("deleteUser", id);
+      this.$router.push("/login");
     },
   },
 };

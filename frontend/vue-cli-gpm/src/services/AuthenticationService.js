@@ -7,10 +7,6 @@ export default {
   login(data) {
     return Api().post("users/login", data);
   },
-  deleteUser(id) {
-    return Api().delete("users/accounts/" + id);
-  },
-
   updateAccount(id, data) {
     return Api.put("users/accounts/" + id, data);
   },
@@ -19,5 +15,8 @@ export default {
   },
   getUserById(id) {
     return Api().get("users/accounts/" + id);
+  },
+  deleteUser(id) {
+    return Api().delete("users/accounts/" + id);
   },
 };

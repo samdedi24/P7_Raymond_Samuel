@@ -83,7 +83,6 @@ export default {
         return "";
       }
     },
-
   },
   methods: {
     logout () {

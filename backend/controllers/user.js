@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
             token: tokenObject.token,
             sub: tokenObject.sub,
             expires: tokenObject.expiresIn,
-            message: "Bonjour " + user.username + " !",
+            message: "Bonjour " + user.username,
           });
         }
       }
@@ -68,7 +68,7 @@ exports.login = async (req, res) => {
   exports.getAllUsers = async (req, res) => {
     try {
       const users = await db.User.findAll({
-        attributes: ["username", "photo", "id", "bio", "email"],
+        attributes: ["username",  "id", "photo", "bio", "email"],
         where: {
           id: {
             [Op.ne]: 1,
