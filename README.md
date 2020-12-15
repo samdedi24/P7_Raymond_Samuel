@@ -37,6 +37,13 @@ npm start ou nodemon serve
 
 ////
 
+BDD (Base de données)
+
+Connecter vous au serveur mysql de votre choix.
+Exécuter la commande : CREATE DATABASE database_deve_gp;
+Identifiant dans le dossier config.json du backend.
+
+Importer le fichier databasegp qui est dans le dossier Data
 
 
 
