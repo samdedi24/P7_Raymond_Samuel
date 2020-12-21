@@ -17,16 +17,6 @@
                   :src="user.photo"
                   alt="Photo de profil"
                 />
-                <v-icon
-                  role="avatar"
-                  v-else-if="
-                    (user.photo === null) & ($store.state.user.id === user.id)
-                  "
-                  >$vuetify.icons.account</v-icon
-                >
-                <v-icon role="avatar" v-else size="32"
-                  >$vuetify.icons.account</v-icon
-                >
               </v-avatar>
               <div class="d-flex flex-column">
                 <div>

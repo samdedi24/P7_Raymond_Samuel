@@ -15,11 +15,7 @@
                 post.User.photo === null &&
                 post.User.id === $store.state.user.id
                 "
-                >$vuetify.icons.account</v-icon
-              >
-              <v-icon role="avatar" size="52px" v-else
-                >$vuetify.icons.account</v-icon
-              >
+              />
             </v-avatar>
             <div class="mt-3">
               <span class="username text-left ml-5">{{ post.User.username }}</span>
@@ -160,14 +156,8 @@
                         comment.User.photo === null &&
                         comment.UserId === $store.state.user.id
                       "
-                      color="pink"
-                      size="32px"
                       role="avatar"
-                      >$vuetify.icons.account</v-icon
-                    >
-                    <v-icon v-else size="32px" role="avatar"
-                      >$vuetify.icons.account</v-icon
-                    >
+                      />
                   </v-list-item-avatar>
 
                   <v-list-item-content class="d-flex ">

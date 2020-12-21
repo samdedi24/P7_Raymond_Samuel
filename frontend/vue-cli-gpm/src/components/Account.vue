@@ -49,7 +49,7 @@
               :rules="UsernameRules"
               required
               counter="30"
-              hint="Le Username doit avoir 3 caractères min et 30 max"
+              hint="Le prénom doit avoir 3 caractères min et 30 max"
               class="input-group--focused  mx-3"
             ></v-text-field>
 
@@ -90,7 +90,7 @@
               class="d-flex flex-column justify-space-between"
               max-width="70%"
             >
-              <strong>Votre biographie </strong>
+              <strong>Votre bio </strong>
               <div>
                 <span v-if="!user.bio"> Parle nous de toi !</span>
                 <span class="bio-field">{{ user.bio }}</span>
