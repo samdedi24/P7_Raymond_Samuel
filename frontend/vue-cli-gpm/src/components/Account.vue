@@ -74,7 +74,7 @@
             <div v-if="updatePhoto" class="d-flex justify-center">
               <label for="image" class="mr-3">Photo</label>
               <input
-                @change="uploadImage"
+                @change="imageUrl"
                 type="file"
                 accept="image/png, image/jpeg,
                     image/bmp, image/gif"
@@ -179,7 +179,7 @@ export default {
     this.$store.dispatch("getUserById");
   },
   methods: {
-    getBackHome() {
+    getBack() {
       this.$router.push("/all");
     },
     toggleUsername() {
@@ -198,7 +198,7 @@ export default {
       this.showBio = false;
       this.options = true;
     },
-    uploadImage() {
+    imageUrl() {
       const file = this.$refs.file.files[0];
       this.file = file;
       console.log(this.file);

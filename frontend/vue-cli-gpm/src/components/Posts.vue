@@ -11,13 +11,11 @@
                 alt="Photo de profil"
               />
               <v-icon
-                role="avatar personnalisé"
+                role="avatar"
                 v-else-if="
                 post.User.photo === null &&
                 post.User.id === $store.state.user.id
                 "
-                color="pink"
-                size="52px"
                 >$vuetify.icons.account</v-icon
               >
               <v-icon role="avatar" size="52px" v-else

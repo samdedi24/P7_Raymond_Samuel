@@ -35,7 +35,7 @@ CREATE TABLE `comments` (
   KEY `PostId` (`PostId`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`PostId`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (12,'Albon par contre doit vraiment partie de chez RedBull','Jean-pierre','2020-11-06 10:25:21','2020-11-06 10:25:21',7,3),(16,'Très content pour Sergio, en espérant qui puisse trouver un siège pour 2021 !','Samuel','2020-12-07 14:48:44','2020-12-07 14:48:44',3,16),(71,'fsfesf','Samuel','2020-12-15 13:20:03','2020-12-15 13:20:03',3,46);
+INSERT INTO `comments` VALUES (83,'J\'adore très belle photo :) à demain oublie pas ton carnet de note de la réunion d\'hier !','Marine','2020-12-15 16:32:46','2020-12-15 16:32:46',14,54),(85,'T\'es nul t\'es nul t\'es nul','Inconnu','2020-12-21 11:45:24','2020-12-21 11:45:24',15,55);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `Posts` (
   PRIMARY KEY (`id`),
   KEY `UserId` (`UserId`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `Users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `Posts` (
 
 LOCK TABLES `Posts` WRITE;
 /*!40000 ALTER TABLE `Posts` DISABLE KEYS */;
-INSERT INTO `Posts` VALUES (3,'Max est meilleur voici la preuve','Je préfère quand même Max mais Lewis reste le roi :)',NULL,3,'2020-11-04 15:51:08','2020-11-04 15:51:08'),(4,'BLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLA','BLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLABLA',NULL,8,'2020-11-12 10:45:59','2020-11-12 10:45:59'),(5,'Lance Stroll','Aenean placerat. In vulputate urna eu arcu. Aliquam erat volutpat. Suspendisse potenti. Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere.',NULL,8,'2020-11-12 11:18:14','2020-11-12 11:18:14'),(6,'Lewis','Belle course de lewis, je n\'aurai jamais crus qu\'il finirait premier aujourd\'hui! Surtout avec ces conditions météorologie!',NULL,3,'2020-11-16 11:18:39','2020-11-16 11:18:39'),(12,'Bonjour','Russel vraiment pas de bol! Qui a vu la course ce dimanche ?????',NULL,3,'2020-12-07 11:04:23','2020-12-15 13:08:45'),(16,'Sergio','Trés content pour Sergio en espérant qu\'il trouve un siège pour 2021',NULL,5,'2020-12-07 11:38:06','2020-12-07 11:38:06'),(46,'Montagne du sud','La jolie montagne du sud ouest mon ami','http://localhost:3030/images/test21608032675658.jpg',3,'2020-12-15 11:44:35','2020-12-15 13:10:52'),(48,'bonsoir','bonsoir',NULL,3,'2020-12-15 13:21:28','2020-12-15 13:21:48');
+INSERT INTO `Posts` VALUES (54,'Photo depuis une montagne en vacances :)','Photo prise avec un iphone 3gs, il date un peu je vous l\'avoue','http://localhost:3030/images/test21608049893914.jpg',13,'2020-12-15 16:31:33','2020-12-15 16:31:33'),(55,'Demain 9h','J\'arrive avec ça demain pour pas être en retard aha bon week end à tous !','http://localhost:3030/images/lewispng1608050059019.png',14,'2020-12-15 16:34:19','2020-12-15 16:34:19');
 /*!40000 ALTER TABLE `Posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `Users` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','admin@gmail.com','$2b$10$NN/fTqQN.tlerwyTooNphumqROBdqmCX5JCjz91KevsMXJQqVUVbu',NULL,NULL,1,'2020-11-03 11:00:00','2020-11-03 11:10:00'),(3,'Samuel','test10@gmail.com','$2b$10$61zroAmZyBdzlvDxBK6sxOBTbjGVhsJqQIU50FsINMftTJ59dN56u','http://localhost:3030/images/pngtree-business-user-profile-vector-png-image_48305191607352657949.jpg','Bonjour bonjour bonjour bonjour',0,'2020-11-04 10:29:55','2020-12-07 14:50:57'),(5,'Pierrot','test11@gmail.com','$2b$10$WeeQScwSQFt9CnREhUF21.gAKEtty5dpv6KIs3MccRJ8S36WbXQUG','http://localhost:3030/images/Marine1606816281774.jpg',NULL,0,'2020-11-04 13:02:23','2020-12-02 13:28:08'),(7,'Jean-pierre','test20@gmail.com','$2b$10$wC6MBYtZDt0wxzHMSd8kvuFdkvtO3kJD4IWfmH1eVD.tBwOmaIzty',NULL,'Bonjour moi c\'est Jean Pierre de l\'étage informatique niveau 4 bâtiment A ',0,'2020-11-06 09:35:11','2020-11-06 09:46:01'),(8,'Johnathan','test21@gmail.com','$2b$10$cCM9kUA6bap565RU9EONROECfnO/6GY6TM6cog3bpINB/Yjf8Abx6','http://localhost:3030/images/test.jps1606143812164.jpg','ggddrsrrsffsfs',0,'2020-11-10 10:39:52','2020-11-24 10:08:04'),(9,'Michel','test22@gmail.com','$2b$10$iP5b4nOYcPHPtQgOGxKUJuCtxX3EoqxBn9Tz55T5HBlRIZWEWPuZu',NULL,NULL,0,'2020-11-10 12:01:30','2020-11-10 12:01:30');
+INSERT INTO `Users` VALUES (1,'admin','admin@gmail.com','$2b$10$NN/fTqQN.tlerwyTooNphumqROBdqmCX5JCjz91KevsMXJQqVUVbu','http://localhost:3030/images/pngtree-business-user-profile-vector-png-image_48305191608050156669.jpg',NULL,1,'2020-11-03 11:00:00','2020-12-15 16:35:56'),(13,'Jean','jean@gmail.com','$2b$10$cB4M6AaMvUoeaebTrG01Le1dYKLr9y7IaA0ss09KToKCeSKmNQZwm','http://localhost:3030/images/pngtree-business-user-profile-vector-png-image_48305191608049904993.jpg',NULL,0,'2020-12-15 16:30:34','2020-12-15 16:31:45'),(14,'Marine','marine@gmail.com','$2b$10$NivH3Fl3Y.5BHM9qdKBC/ODe5Fw4/Dhlm/M435VRGBrLhDHotM/Xu','http://localhost:3030/images/Marine1608049992726.jpg','Moi c\'est Marine la manageuse la plus géniale :)',0,'2020-12-15 16:32:20','2020-12-15 16:33:12'),(15,'Inconnu','inconnu@gmail.com','$2b$10$L8iU1NrRvuzODrPN8yuVSulnGha9vzu31cLgrYbJzbGVdCYrOyR2W','http://localhost:3030/images/pngtree-business-user-profile-vector-png-image_48305191608551377187.jpg','Entreprise en carton',0,'2020-12-15 16:34:51','2020-12-21 11:49:37');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -143,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-15 15:11:31
+-- Dump completed on 2020-12-21 14:22:28

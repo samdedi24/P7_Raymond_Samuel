@@ -50,7 +50,7 @@
             <div class="d-flex  justify-center ">
               <label for="image" class="pr-2">Image</label>
               <input
-                @change="uploadImage"
+                @change="imageUrl"
                 type="file"
                 accept="image/png, image/jpeg,
                 image/bmp, image/gif"
@@ -105,7 +105,7 @@ export default {
     toggleImage() {
       (this.withImage = true), (this.options = false);
     },
-    uploadImage() {
+    imageUrl() {
       const file = this.$refs.file.files[0];
       this.file = file;
     },
