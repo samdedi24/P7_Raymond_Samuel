@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Logo Groupomania" src="../assets/icon-left-font-monochrome-black.png">
+    <p>Inscris toi ou connecte toi avec les boutons en haut à droite :)</p>
   </div>
 </template>
 
@@ -14,6 +15,6 @@ export default {
 
 <style lang="scss">
     img {
-      width: 150px;
+      width: 550px;
     }
 </style> 

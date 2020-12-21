@@ -106,5 +106,8 @@ export default {
 
 
 <style scoped lang="scss">
-
+.account {
+  display: flex;
+  flex-direction: column;
+}
 </style>

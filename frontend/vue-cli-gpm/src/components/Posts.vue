@@ -1,5 +1,4 @@
 <template>
-  <div>
     <v-card class="posts-card mx-auto mt-2 mb-6 pb-4" round elevation="3">
       <div>
         <div class="d-flex justify-space-between pr-3 mb-2">
@@ -209,7 +208,6 @@
         </v-expand-transition>
       </div>
     </v-card>
-  </div>
 </template>
 
 <script>

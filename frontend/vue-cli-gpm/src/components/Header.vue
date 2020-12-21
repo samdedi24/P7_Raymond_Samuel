@@ -36,7 +36,7 @@
               </v-btn>
               <v-btn 
                 v-if="$store.state.isLoggedIn"
-                aria-label="L'actualitées"
+                aria-label="L'actualitées des utilisateurs"
                 text 
                 dark
                 :to="{
