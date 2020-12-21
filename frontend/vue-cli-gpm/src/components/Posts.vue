@@ -150,7 +150,7 @@
                 :comment="comment"
               >
                 <v-list-item class="comment">
-                  <v-list-item-avatar class="comment_photo">
+                  <v-list-item-avatar>
                     <img
                       v-if="comment.User.photo !== null"
                       :src="comment.User.photo"
@@ -171,14 +171,14 @@
                     >
                   </v-list-item-avatar>
 
-                  <v-list-item-content class="comment_body d-flex ">
+                  <v-list-item-content class="d-flex ">
                     <strong
                       v-html="comment.User.username"
-                      class="pr-5 text-left  username comment__username"
+                      class="pr-5 text-left  username"
                     ></strong>
                     <span
                       v-html="comment.message"
-                      class=" text-left comment__message"
+                      class=" text-left"
                     ></span>
                   </v-list-item-content>
 
