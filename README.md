@@ -15,11 +15,15 @@ FRONTEND
 
 Ouvrir le dossier Frontend dans le terminal de votre éditeur puis exécuter la commande:
 
+cd frontend
+
+puis
+
 npm install
 
 puis
 
-npm start
+npm run serve
 
 SI rien ne s'ouvre voici le lien http://localhost:8080/
 
