@@ -1,5 +1,5 @@
 <template>
-    <v-card class="posts-card mx-auto mt-2 mb-6 pb-4" round elevation="3">
+    <v-card class="posts-card mx-auto mt-2 mb-6 pb-4" round elevation="3" v-if="post.User">
       <div>
         <div class="d-flex justify-space-between pr-3 mb-2">
           <v-card-title class="post-title">
@@ -156,6 +156,8 @@
                         comment.User.photo === null &&
                         comment.UserId === $store.state.user.id
                       "
+                      color="pink"
+                      size="32px"
                       role="avatar"
                       />
                   </v-list-item-avatar>

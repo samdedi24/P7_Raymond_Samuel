@@ -15,6 +15,7 @@
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
                     @click="deleteUser(user.id)"
+                     aria-label="supprimer son compte"
                     class="mx-2"
                     fab
                     x-small

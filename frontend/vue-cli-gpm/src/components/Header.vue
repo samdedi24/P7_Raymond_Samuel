@@ -30,7 +30,7 @@
                 v-if="$store.state.isLoggedIn"
                 aria-label="Page des profils"
                 text
-                dark  
+                dark
                 to="/accounts">
                 Les profils
               </v-btn>
