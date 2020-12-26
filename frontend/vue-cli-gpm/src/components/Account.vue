@@ -45,9 +45,9 @@
             </v-card-title>
             <v-text-field
               v-if="updateUsername"
-              label="Nouveau Username"
+              label="Nouveau username"
               v-model="newUsername"
-              :rules="UsernameRules"
+              :rules="usernameRules"
               required
               counter="30"
               hint="Le prénom doit avoir 3 caractères min et 30 max"
@@ -161,7 +161,7 @@ export default {
       options: false,
       newUsername: "",
       newBio: "",
-      UsernameRules: [
+      usernameRules: [
         (v) => v.length <= 30 || "Max 30 caractères",
         (v) => !!v || "Le Username est obligatoire",
       ],
@@ -211,7 +211,7 @@ export default {
       this.file = file;
       console.log(this.file);
     },
-    onSubmit() {
+    async onSubmit() {
       const formData = new FormData();
       formData.append("username", this.newUsername);
       formData.append("bio", this.newBio);
@@ -220,8 +220,6 @@ export default {
       }
       this.$store.dispatch("getUsers");
       this.$store.dispatch("getUserById", this.user.id);
-      this.$store.dispatch("updateAccount", formData);
-      this.$store.dispatch("getUserById", this.user.id);
       this.updateBio = false;
       this.updatePhoto = false;
       this.updateUsername = false;
@@ -229,6 +227,8 @@ export default {
       this.showBio = true;
       this.showPhoto = true;
       this.showUsername = true;
+      await this.$store.dispatch("updateAccount", formData)
+      await this.$store.dispatch("getUserById", this.user.id)
     },
     deleteUser(id) {
       this.$store.dispatch("deleteUser", id);

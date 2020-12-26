@@ -9,11 +9,8 @@ module.exports = (req, res, next) => {
         //On extrait l'user id du TOKEN
         const userId = decodedToken.sub;   
         //On compare avec celui de la requete      
-        if (req.body.userId && req.body.userId !== userId) { 
-            throw 'User id non valable !';
-        } else {
             next(); //Si juste on passe au middleware suivant
-        }
+        
     } catch (error) {
         res.status(401).json({ error: new Error('Invalid request !') });
     }
