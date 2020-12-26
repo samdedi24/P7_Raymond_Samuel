@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <v-toolbar fixed dark>
+        <v-toolbar fixed color="#D1515A">
           <v-toolbar-title class="">
             <img alt="Logo Groupomania" src="../assets/icon-left-font-monochrome-black.png">
         </v-toolbar-title>
@@ -10,7 +10,6 @@
                 v-if="!$store.state.isLoggedIn"
                 aria-label="Se connecter"
                 text 
-                dark
                 :to="{
                   name: 'login'
                 }">
@@ -19,8 +18,7 @@
               <v-btn 
                 v-if="!$store.state.isLoggedIn"
                 aria-label="Inscription"
-                text 
-                dark
+                text
                 :to="{
                   name: 'signup'
                 }">
@@ -30,7 +28,6 @@
                 v-if="$store.state.isLoggedIn"
                 aria-label="Page des profils"
                 text
-                dark
                 to="/accounts">
                 Les profils
               </v-btn>
@@ -38,7 +35,6 @@
                 v-if="$store.state.isLoggedIn"
                 aria-label="L'actualitées des utilisateurs"
                 text 
-                dark
                 :to="{
                   name: 'wall'
                 }">
@@ -48,7 +44,6 @@
                 v-if="$store.state.isLoggedIn"
                 aria-label="Page de ton profil"
                 text
-                dark  
                 @click="getUserProfile($store.state.user.id)">
                 Profil
               </v-btn>
@@ -56,7 +51,6 @@
                 v-if="$store.state.isLoggedIn"
                 aria-label="Se déconnecter"
                 text 
-                dark
                 @click="logout">
                 LogOut
               </v-btn>

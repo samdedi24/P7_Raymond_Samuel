@@ -1,8 +1,9 @@
 <template>
-  <v-container fluid class="wall-container">
+  <v-container fluid  class="wall-container">
     <v-row class="bloc">
       <v-col sm="12" md="6" class="mx-auto">
         <v-card flat class="posts-card ">
+          <img alt="Logo Groupomania" src="../assets/icon.png">
           <h1 class="font-weight-regular text-center">Actualités</h1>
           <v-card-title
             class=" d-flex justify-space-between"
@@ -96,5 +97,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.wall-container{
+  background-color: #081F42;
+}
+img {
+  width: 80px;
+}
 </style>

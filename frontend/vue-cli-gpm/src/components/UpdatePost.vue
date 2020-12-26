@@ -87,7 +87,7 @@
         <div v-if="withImage" class="pb-5 pt-5 d-flex justify-center">
           <label for="image" class="pr-3">Image</label>
           <input
-            @change="uploadImage"
+            @change="imageUrl"
             type="file"
             aria-label="image input"
             accept="image/png, image/jpeg,image/bmp, image/gif"
@@ -160,7 +160,7 @@ export default {
       this.withImage = true;
       this.showImage = false;
     },
-    uploadImage() {
+    imageUrl() {
       const file = this.$refs.file.files[0];
       this.file = file;
     },

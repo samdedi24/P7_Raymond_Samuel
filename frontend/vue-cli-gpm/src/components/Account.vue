@@ -38,7 +38,7 @@
               dark
               class=" profil-middle__left d-flex justify-space-between"
             >
-              <span class="Username"> Salut {{ user.username }} ! </span>
+              <span class="username"> Salut {{ user.username }} ! </span>
               <v-btn @click="toggleUsername" x-small>
                 Modifier
               </v-btn>
@@ -66,6 +66,13 @@
                   :src="user.photo"
                   alt="Photo de profil"
                 />
+                <v-icon
+                  :color="isLoggedIn"
+                  size="96px"
+                  aria-label="avatar"
+                  v-else
+                  >$vuetify.icons.account</v-icon
+                >
               </v-avatar>
               <v-btn @click="togglePhoto" class="mx-2" x-small>
                 Changer
@@ -232,6 +239,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.signup-container{
+  background-color: #081F42;
+}
 .v-avatar {
   margin-top: -20px;
   margin-bottom: 1em;

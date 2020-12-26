@@ -124,5 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.post-box {
+  background-color: #081F42;
+}
 </style>

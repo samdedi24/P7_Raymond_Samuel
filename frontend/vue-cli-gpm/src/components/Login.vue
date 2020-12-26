@@ -1,17 +1,23 @@
 <template>
     <div>
-        <form class="format">
+        <v-card fluid class="format">
             <v-text-field
                 label="email"
                 v-model="email"
-                type="email">
+                type="email"
+                :rules="[(v) => !!v || 'Email requis valide']"
+                required
+                >
             </v-text-field>
             <v-text-field
                 label="password"
                 v-model="password"
-                type="password">
+                type="password"
+                :rules="[(v) => !!v || 'Mdp requis valide']"
+                required
+                >
             </v-text-field>
-        </form>   
+        </v-card>   
             <v-btn
                 dark
                 class="cyan"
@@ -41,11 +47,22 @@ export default {
           email: this.email,
           password: this.password,
         });
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-        this.$router.push("/all")
+        this.message = response.data.message;
+  
+        this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setUser", response.data.user);
+        this.$store.dispatch("getUserById", response.data.user.id);
+        let router = this.$router;
+        setTimeout(function() {
+          router.push("/all");
+        }, 10);
       } catch (error) {
-        this.error = error.response.data.error
+        this.errorMessage = error.response.data.error;
+        setTimeout(() => {
+          this.email= "";
+          this.password= "";
+          this.errorMessage = "";
+        }, 200);
       }
     },
   },
@@ -69,3 +86,5 @@ export default {
         margin: auto;
     }
 </style> 
+
+
